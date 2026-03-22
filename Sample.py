@@ -7,6 +7,31 @@
 // Your code here along with comments explaining your approach
 
 ## Problem1 (https://leetcode.com/problems/sort-colors/)
+## Time Complexity : O(n)
+## Space Complexity : O(1)
+# bucket sort since only 3 integers to sort
+
+class Solution:
+    def sortColors(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        hashmap = {}
+        for i in nums:
+            if i not in hashmap:
+                hashmap[i] = 0
+            hashmap[i] += 1
+
+        for n in range(len(nums)):
+            if 0 in hashmap and hashmap[0] > 0:
+                nums[n] = 0
+                hashmap[0] -= 1
+            elif 1 in hashmap and hashmap[1] > 0:
+                nums[n] = 1
+                hashmap[1] -= 1
+            elif 2 in hashmap and hashmap[2] > 0:
+                nums[n] = 2
+                hashmap[2] -= 1        
 
 ## Problem2 (https://leetcode.com/problems/3sum/)
 ## Time Complexity : O(nlogn)
